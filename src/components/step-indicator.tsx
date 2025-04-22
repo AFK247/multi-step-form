@@ -18,7 +18,7 @@ export default function StepIndicator({
   return (
     <div className="relative">
       {/* Horizontal line */}
-      <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2 z-0" />
+      <div className="absolute top-1/2 left-8 right-4 h-0.5 bg-gray-200 -translate-y-1/2 z-0" />
 
       {/* Steps */}
       <div className="relative z-10 flex justify-between">
