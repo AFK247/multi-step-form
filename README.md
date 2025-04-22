@@ -8,7 +8,7 @@ A React application featuring a multi-step form with validation, local storage p
 - Form validation using React Hook Form and Zod
 - Progress saving with localStorage
 - Form submission history
-- Responsive design with Tailwind CSS and shadcn/ui
+- Responsive design with Tailwind CSS and Shadcn
 
 ## Technologies Used
 
@@ -16,7 +16,7 @@ A React application featuring a multi-step form with validation, local storage p
 - TypeScript
 - React Hook Form with Zod validation
 - Tailwind CSS
-- shadcn/ui components
+- Shadcn
 
 ## Getting Started
 
@@ -45,9 +45,9 @@ A React application featuring a multi-step form with validation, local storage p
 3. Run the development server
 
    ```bash
-   npm start
+   npm run dev
    # or
-   yarn start
+   yarn dev
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application
