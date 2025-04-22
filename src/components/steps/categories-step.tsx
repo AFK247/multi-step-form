@@ -11,18 +11,17 @@ import type { FormData } from "@/components/multi-step-form";
 
 const CATEGORIES = [
   { id: "technology", label: "Technology" },
-  { id: "health", label: "Health & Wellness" },
+  { id: "health", label: "Health" },
   { id: "finance", label: "Finance" },
   { id: "education", label: "Education" },
   { id: "entertainment", label: "Entertainment" },
   { id: "travel", label: "Travel" },
-  { id: "food", label: "Food & Dining" },
-  { id: "sports", label: "Sports & Fitness" },
+  { id: "food", label: "Food" },
+  { id: "sports", label: "Sports" },
 ];
 
 export default function CategoriesStep() {
-  const { control, watch } = useFormContext<FormData>();
-  const selectedCategories = watch("categories") || [];
+  const { control } = useFormContext<FormData>();
 
   return (
     <div className="space-y-6">
@@ -54,6 +53,7 @@ export default function CategoriesStep() {
                       >
                         <FormControl>
                           <Checkbox
+                            className="cursor-pointer"
                             checked={field.value?.includes(category.id)}
                             onCheckedChange={(checked) => {
                               const updatedCategories = checked
@@ -61,6 +61,7 @@ export default function CategoriesStep() {
                                 : field.value?.filter(
                                     (value) => value !== category.id
                                   ) || [];
+
                               field.onChange(updatedCategories);
                             }}
                           />

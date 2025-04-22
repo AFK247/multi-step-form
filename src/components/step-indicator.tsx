@@ -1,16 +1,20 @@
-import { Check } from "lucide-react"
+import { Check } from "lucide-react";
+import clsx from "clsx";
 
 interface Step {
-  id: number
-  label: string
+  id: number;
+  label: string;
 }
 
 interface StepIndicatorProps {
-  steps: Step[]
-  currentStep: number
+  steps: Step[];
+  currentStep: number;
 }
 
-export default function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
+export default function StepIndicator({
+  steps,
+  currentStep,
+}: StepIndicatorProps) {
   return (
     <div className="relative">
       {/* Horizontal line */}
@@ -19,33 +23,41 @@ export default function StepIndicator({ steps, currentStep }: StepIndicatorProps
       {/* Steps */}
       <div className="relative z-10 flex justify-between">
         {steps.map((step) => {
-          const isActive = currentStep === step.id
-          const isCompleted = currentStep > step.id
+          const isActive = currentStep === step.id;
+          const isCompleted = currentStep > step.id;
 
           return (
             <div key={step.id} className="flex flex-col items-center">
               <div
-                className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
-                  isActive
-                    ? "border-emerald-500 bg-emerald-500 text-white"
-                    : isCompleted
-                      ? "border-emerald-500 bg-emerald-500 text-white"
-                      : "border-gray-300 bg-white text-gray-500"
-                }`}
+                className={clsx(
+                  "flex items-center justify-center w-10 h-10 rounded-full border-2",
+                  {
+                    "border-emerald-500 bg-emerald-500 text-white":
+                      isActive || isCompleted,
+                    "border-gray-300 bg-white text-gray-500":
+                      !isActive && !isCompleted,
+                  }
+                )}
               >
-                {isCompleted ? <Check className="h-5 w-5" /> : <span>{step.id}</span>}
+                {isCompleted ? (
+                  <Check className="h-5 w-5" />
+                ) : (
+                  <span>{step.id}</span>
+                )}
               </div>
               <span
-                className={`mt-2 text-sm ${
-                  isActive ? "text-emerald-600 font-medium" : isCompleted ? "text-emerald-600" : "text-gray-500"
-                }`}
+                className={clsx("mt-2 text-sm", {
+                  "text-emerald-600 font-medium": isActive,
+                  "text-emerald-600": isCompleted && !isActive,
+                  "text-gray-500": !isActive && !isCompleted,
+                })}
               >
                 {step.label}
               </span>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

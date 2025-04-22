@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -248,12 +246,14 @@ export default function MultiStepForm() {
                   </div>
                   <div className="text-sm space-y-1">
                     {Object.entries(submission).map(([key, value]) => (
-                      <p key={key}>
-                        <span className="font-medium">
+                      <div key={key} className="flex items-start space-x-2">
+                        <span className="font-medium text-slate-700">
                           {key.charAt(0).toUpperCase() + key.slice(1)}:
-                        </span>{" "}
-                        {Array.isArray(value) ? value.join(", ") : value}
-                      </p>
+                        </span>
+                        <span className="text-slate-600">
+                          {Array.isArray(value) ? value.join(", ") : value}
+                        </span>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
